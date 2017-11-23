@@ -3,14 +3,22 @@
 namespace App\Models;
 
 /**
- * Class Topic
- * 话题数据模型
- * @package App\Models
+ * 话题对象
+ * author lichen
+ * date 2017/11/23
  */
 class Topic extends Model {
 
     // 允许用户修改的属性
     protected $fillable = ['title', 'body', 'category_id', 'excerpt', 'slug'];
+
+    /**
+     * 话题 评论 一对多
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function replies() {
+        return $this->hasMany(Reply::class);
+    }
 
     /**
      * 和分类模型关联
