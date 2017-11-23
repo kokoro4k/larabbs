@@ -2,40 +2,11 @@
 
 namespace App\Http\Requests;
 
-class ReplyRequest extends Request
-{
-    public function rules()
-    {
-        switch($this->method())
-        {
-            // CREATE
-            case 'POST':
-            {
-                return [
-                    // CREATE ROLES
-                ];
-            }
-            // UPDATE
-            case 'PUT':
-            case 'PATCH':
-            {
-                return [
-                    // UPDATE ROLES
-                ];
-            }
-            case 'GET':
-            case 'DELETE':
-            default:
-            {
-                return [];
-            };
-        }
-    }
+class ReplyRequest extends Request {
 
-    public function messages()
-    {
+    public function rules() {
         return [
-            // Validation messages
+            'content' => 'required|min:2',
         ];
     }
 }
