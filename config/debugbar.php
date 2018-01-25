@@ -6,5 +6,5 @@
  * Time: 下午4:43
  */
 return [
-    'enabled' => env('APP_DEBUG', false),
+    'enabled' => env('DEBUGER_ENABLE', false),
 ];
