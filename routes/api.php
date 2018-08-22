@@ -45,6 +45,7 @@ $api->version('v1', [
         $api->delete('authorizations/current', 'AuthorizationsController@destroy')
             ->name('api.authorizations.destroy');
     });
+
     $api->group([
         'middleware' => 'api.throttle',
         'limit'      => config('api.rate_limits.access.limit'),
@@ -55,6 +56,8 @@ $api->version('v1', [
             ->name('api.categories.index');
         $api->get('topics', 'TopicsController@index')
             ->name('api.topics.index');
+        $api->get('users/{user}/topics', 'TopicsController@userIndex')
+            ->name('api.users.topics.index');
         // 需要 token 验证的接口
         $api->group(['middleware' => 'api.auth'], function ($api) {
             // 当前登录用户信息
